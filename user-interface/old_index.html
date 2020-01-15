@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pipe Explorer</title>
+    <script src="vue.js"></script>
+    <script src="https://unpkg.com/vue-async-computed"></script>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/vue-topmodal/dist/TopModal.css">
+    <script src="vue-topmodal.js"></script>
+    <script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+    <!-- xmlrpc client by https://github.com/scripting/xml-rpc -->
+    <script type="text/javascript" src="xmlrpc.js"></script>
+    <script type="text/javascript" src="utils.js"></script>
+    <script type="application/javascript" src="xml.js"></script>
+
+</head>
+<body>
+  <h1>Pipe Explorer</h1>
+  <img src="workflow.png" alt="Workflow">
+<div id="snapshot_selector" style="display:none">
+    <selector v-bind:itemlist="snapshots"
+                       v-on:selected="snapshot=$event">Please select a snapshot</selector>
+    <file_list v-bind:files="files" v-on:compute="showmodal"></file_list>
+    <pipemodal v-bind:showmodal1="showmodal1" v-bind:modules="modules"
+               v-bind:filename="filename" v-bind:filelist="files"
+               @computationDone="computationDone" :snapshot="snapshot"
+    @cancel="showmodal1=false"></pipemodal>
+</div>
+<script src="index.js"></script>
+</body>
+</html>

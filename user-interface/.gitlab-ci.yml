@@ -1,0 +1,38 @@
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+build site:
+  stage: build
+  image: node:12
+  script:
+    - npm install --progress=false
+    - npm run potree
+    - npm run build
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - dist
+
+deploy staging:
+  stage: deploy
+  when: manual
+  image: alpine
+  script:
+    - apk add --no-cache rsync openssh
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY" >> ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config 
+    - rsync -rav --delete -e "ssh -p 4223" dist/ msk-deploy@msk-server.bauing.uni-weimar.de:/var/www/deploy/staging
+
+deploy production:
+  stage: deploy
+  when: manual
+  image: alpine
+  script:
+    - apk add --no-cache rsync openssh
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY" >> ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config 
+    - rsync -rav --delete -e "ssh -p 4223" dist/ msk-deploy@msk-server.bauing.uni-weimar.de:/var/www/deploy/production

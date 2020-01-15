@@ -1,0 +1,4 @@
+[submodule "potree"]
+	path = potree
+	url = ../potree.git
+    branch = Custom_potree

@@ -1,0 +1,36 @@
+{
+  "name": "vue-pipe-explorer",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "potree": "gulp build pack",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "core-js": "^2.6.5",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.7.0",
+    "gulp-replace-path": "^0.4.0",
+    "jquery": "^3.4.1",
+    "markerjs": "^1.2.1",
+    "potree": "^0.1.0",
+    "rollup-plugin-includepaths": "^0.2.3",
+    "vue": "^2.6.10",
+    "vue-json-tree-view": "^2.1.4",
+    "xmlrpc": "^1.3.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.7.0",
+    "@vue/cli-plugin-eslint": "^3.7.0",
+    "@vue/cli-service": "^3.7.0",
+    "@vue/eslint-config-prettier": "^4.0.1",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.2.2",
+    "vue-template-compiler": "^2.5.21"
+  }
+}
