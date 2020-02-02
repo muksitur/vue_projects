@@ -10,7 +10,13 @@
         <fieldset class="form-group">
           <label for="searchTerm">Search</label>
           <input v-model="searchTerm" type="text" class="form-control" id="searchTerm" placeholder="Enter a movie title.">
+
+          <label for="type">Select a Type</label>
+          <select class="" name="" id="type" v-model="selectedValue">
+            <option :value="slct" v-for="slct in selectoptions">{{slct}}</option>
+          </select>
         </fieldset>
+
         <button type="submit" class="btn btn-primary">GO</button>
       </form>
       <section>
@@ -44,13 +50,15 @@
 
 <script>
 import Movie from '@/components/Movie';
-const API_URL = 'https://omdb-api.now.sh/?type=movie&s=';
+const API_URL = 'https://omdb-api.now.sh/?type=';
 export default {
   name: 'app',
   components: {
     Movie,
   },
   data: () => ({
+    selectedValue: "",
+    selectoptions : ["Series","Movie"],
     error: '',
     searchTerm: '',
     results: [],
@@ -58,7 +66,7 @@ export default {
   }),
   methods: {
     async getResults() {
-      const url = `${API_URL}${this.searchTerm}`;
+      const url = `${API_URL}${this.selectedValue}&s=${this.searchTerm}`;
       const response = await fetch(url);
       const data = await response.json();
       if (data.Error) {
