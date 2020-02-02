@@ -3,7 +3,7 @@
     <!-- <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <img src="./assets/dent.jpeg" style="width: 152px; height: 80px;">
-    <select class="" name="" id="page" @change="saveselectvalue()">
+    <select class="" name="" id="page" v-model="selectedValue">
       <option :value="slct" v-for="slct in selectoptions">{{slct}}</option>
     </select>
 
@@ -34,11 +34,6 @@ export default {
     Registration
   },
   methods:{
-    saveselectvalue(){
-      this.selectedValue = document.getElementById("page").value;
-      // alert(this.selectedValue);
-
-    },
     selectactivation(string){
       this.selectedValue = string;
       alert(this.selectedValue);
