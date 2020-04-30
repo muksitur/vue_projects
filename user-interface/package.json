@@ -15,7 +15,7 @@
     "gulp-concat": "^2.6.1",
     "gulp-connect": "^5.7.0",
     "gulp-replace-path": "^0.4.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "markerjs": "^1.2.1",
     "potree": "^0.1.0",
     "rollup-plugin-includepaths": "^0.2.3",
